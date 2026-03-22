@@ -1,0 +1,570 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(http_server_duration_milliseconds_count[5m])) by (exported_job)",
+          "legendFormat": "{{exported_job}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "HTTP Requests Rate (by Service)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(rate(http_server_duration_milliseconds_sum[5m])) by (exported_job) / sum(rate(http_server_duration_milliseconds_count[5m])) by (exported_job)",
+          "legendFormat": "{{exported_job}} avg latency",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "HTTP Latency (ms)",
+      "type": "timeseries"
+    },
+    {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "prometheus"
+       },
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "palette-classic"
+           },
+           "custom": {
+             "axisBorderShow": false,
+             "axisCenteredZero": false,
+             "axisColorMode": "text",
+             "axisLabel": "",
+             "axisPlacement": "auto",
+             "barAlignment": 0,
+             "drawStyle": "line",
+             "fillOpacity": 0,
+             "gradientMode": "none",
+             "hideFrom": {
+               "legend": false,
+               "tooltip": false,
+               "viz": false
+             },
+             "insertNulls": false,
+             "lineInterpolation": "linear",
+             "lineWidth": 1,
+             "pointSize": 5,
+             "scaleDistribution": {
+               "type": "linear"
+             },
+             "showPoints": "auto",
+             "spanNulls": false,
+             "stacking": {
+               "group": "A",
+               "mode": "none"
+             },
+             "thresholdsStyle": {
+               "mode": "off"
+             }
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           }
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 8,
+         "w": 8,
+         "x": 0,
+         "y": 8
+       },
+       "id": 3,
+       "options": {
+         "legend": {
+           "calcs": [],
+           "displayMode": "list",
+           "placement": "bottom",
+           "showLegend": true
+         },
+         "tooltip": {
+           "mode": "single",
+           "sort": "none"
+         }
+       },
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum(rate(http_server_duration_milliseconds_count{http_status_code=~\"5..\"}[5m])) by (exported_job)",
+           "legendFormat": "{{exported_job}} 5xx",
+           "range": true,
+           "refId": "A"
+         },
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum(rate(http_server_duration_milliseconds_count{http_status_code=~\"4..\"}[5m])) by (exported_job)",
+           "legendFormat": "{{exported_job}} 4xx",
+           "range": true,
+           "refId": "B"
+         }
+       ],
+       "title": "HTTP Request Failures (5xx & 4xx)",
+       "type": "timeseries"
+    },
+    {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "prometheus"
+       },
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "palette-classic"
+           },
+           "custom": {
+             "axisBorderShow": false,
+             "axisCenteredZero": false,
+             "axisColorMode": "text",
+             "axisLabel": "",
+             "axisPlacement": "auto",
+             "barAlignment": 0,
+             "drawStyle": "line",
+             "fillOpacity": 0,
+             "gradientMode": "none",
+             "hideFrom": {
+               "legend": false,
+               "tooltip": false,
+               "viz": false
+             },
+             "insertNulls": false,
+             "lineInterpolation": "linear",
+             "lineWidth": 1,
+             "pointSize": 5,
+             "scaleDistribution": {
+               "type": "linear"
+             },
+             "showPoints": "auto",
+             "spanNulls": false,
+             "stacking": {
+               "group": "A",
+               "mode": "none"
+             },
+             "thresholdsStyle": {
+               "mode": "off"
+             }
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           }
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 8,
+         "w": 8,
+         "x": 8,
+         "y": 8
+       },
+       "id": 4,
+       "options": {
+         "legend": {
+           "calcs": [],
+           "displayMode": "list",
+           "placement": "bottom",
+           "showLegend": true
+         },
+         "tooltip": {
+           "mode": "single",
+           "sort": "none"
+         }
+       },
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum(system_memory_usage{state=\"used\"}) by (exported_job) / 1024 / 1024",
+           "legendFormat": "{{exported_job}} (MB)",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "Memory Usage (MB)",
+       "type": "timeseries"
+    },
+    {
+       "datasource": {
+         "type": "prometheus",
+         "uid": "prometheus"
+       },
+       "fieldConfig": {
+         "defaults": {
+           "color": {
+             "mode": "palette-classic"
+           },
+           "custom": {
+             "axisBorderShow": false,
+             "axisCenteredZero": false,
+             "axisColorMode": "text",
+             "axisLabel": "",
+             "axisPlacement": "auto",
+             "barAlignment": 0,
+             "drawStyle": "line",
+             "fillOpacity": 0,
+             "gradientMode": "none",
+             "hideFrom": {
+               "legend": false,
+               "tooltip": false,
+               "viz": false
+             },
+             "insertNulls": false,
+             "lineInterpolation": "linear",
+             "lineWidth": 1,
+             "pointSize": 5,
+             "scaleDistribution": {
+               "type": "linear"
+             },
+             "showPoints": "auto",
+             "spanNulls": false,
+             "stacking": {
+               "group": "A",
+               "mode": "none"
+             },
+             "thresholdsStyle": {
+               "mode": "off"
+             }
+           },
+           "mappings": [],
+           "thresholds": {
+             "mode": "absolute",
+             "steps": [
+               {
+                 "color": "green",
+                 "value": null
+               },
+               {
+                 "color": "red",
+                 "value": 80
+               }
+             ]
+           }
+         },
+         "overrides": []
+       },
+       "gridPos": {
+         "h": 8,
+         "w": 8,
+         "x": 16,
+         "y": 8
+       },
+       "id": 5,
+       "options": {
+         "legend": {
+           "calcs": [],
+           "displayMode": "list",
+           "placement": "bottom",
+           "showLegend": true
+         },
+         "tooltip": {
+           "mode": "single",
+           "sort": "none"
+         }
+       },
+       "targets": [
+         {
+           "datasource": {
+             "type": "prometheus",
+             "uid": "prometheus"
+           },
+           "editorMode": "code",
+           "expr": "sum by(exported_job) (rate(system_cpu_time_seconds_total{state!=\"idle\"}[5m])) / sum by(exported_job) (rate(system_cpu_time_seconds_total[5m])) * 100",
+           "legendFormat": "{{exported_job}} %",
+           "range": true,
+           "refId": "A"
+         }
+       ],
+       "title": "CPU Usage (%)",
+       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "prometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 6,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "editorMode": "code",
+          "expr": "sum(order_created_total)",
+          "legendFormat": "Total Orders",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Orders Created",
+      "type": "stat"
+    }
+  ],
+  "refresh": "10s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-15m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Node.js Microservices",
+  "uid": "microservices",
+  "version": 2,
+  "weekStart": ""
+}
