@@ -97,6 +97,7 @@ services:
       - RABBITMQ_URL=amqp://rabbitmq
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - OTEL_SERVICE_NAME=user-service
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=user-service
     ports:
       - "3001:3001"
     depends_on:
@@ -119,6 +120,7 @@ services:
       - RABBITMQ_URL=amqp://rabbitmq
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - OTEL_SERVICE_NAME=order-service
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=order-service
     ports:
       - "3002:3002"
     depends_on:
@@ -136,6 +138,7 @@ services:
       - RABBITMQ_URL=amqp://rabbitmq
       - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
       - OTEL_SERVICE_NAME=notification-service
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=notification-service
     ports:
       - "3003:3003"
     depends_on:

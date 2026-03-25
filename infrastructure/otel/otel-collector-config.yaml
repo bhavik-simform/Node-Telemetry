@@ -18,20 +18,36 @@ exporters:
     tls:
       insecure: true
 
+  debug:
+    verbosity: detailed
+
 processors:
   batch:
+  
+  transform:
+    log_statements:
+      - context: log
+        statements:
+          - set(attributes["service_name"], resource.attributes["service.name"])
+          - set(attributes["loki.attribute.labels"], "service_name")
+
+  resource:
+    attributes:
+      - key: loki.resource.labels
+        value: service.name
+        action: insert
 
 service:
   pipelines:
     traces:
       receivers: [otlp]
-      processors: [batch]
+      processors: [resource, batch]
       exporters: [otlp/tempo]
     metrics:
       receivers: [otlp]
-      processors: [batch]
-      exporters: [prometheus]
+      processors: [resource, batch]
+      exporters: [prometheus, debug]
     logs:
       receivers: [otlp]
-      processors: [batch]
-      exporters: [loki]
+      processors: [resource, transform, batch]
+      exporters: [loki, debug]

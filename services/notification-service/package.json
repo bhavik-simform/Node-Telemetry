@@ -8,19 +8,21 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@opentelemetry/api": "^1.7.0",
-    "@opentelemetry/auto-instrumentations-node": "^0.40.1",
-    "@opentelemetry/exporter-logs-otlp-grpc": "^0.213.0",
-    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.45.1",
-    "@opentelemetry/exporter-trace-otlp-grpc": "^0.45.1",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/api-logs": "^0.52.1",
+    "@opentelemetry/auto-instrumentations-node": "^0.49.1",
+    "@opentelemetry/exporter-logs-otlp-grpc": "^0.52.1",
+    "@opentelemetry/exporter-metrics-otlp-grpc": "^0.52.1",
+    "@opentelemetry/exporter-trace-otlp-grpc": "^0.52.1",
     "@opentelemetry/host-metrics": "^0.38.3",
-    "@opentelemetry/sdk-logs": "^0.213.0",
-    "@opentelemetry/sdk-metrics": "^1.18.0",
-    "@opentelemetry/sdk-node": "^0.45.1",
+    "@opentelemetry/sdk-logs": "^0.52.1",
+    "@opentelemetry/sdk-metrics": "^1.25.1",
+    "@opentelemetry/sdk-node": "^0.52.1",
     "amqplib": "^0.10.3",
     "express": "^4.18.2",
     "pino": "^8.16.2",
-    "pino-http": "^8.5.1"
+    "pino-http": "^8.5.1",
+    "pino-opentelemetry-transport": "^0.5.0"
   },
   "devDependencies": {
     "@types/amqplib": "^0.10.4",
