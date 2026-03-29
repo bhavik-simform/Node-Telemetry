@@ -63,9 +63,18 @@ services:
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
       - ./infrastructure/tempo/tempo.yaml:/etc/tempo.yaml
-      # - ./tempo-data:/tmp/tempo #volume mapping for traces
+      # - ./tempo-data:/tmp/tempo
     ports:
       - "3200:3200"
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.50
+    restart: unless-stopped
+    environment:
+      - COLLECTOR_OTLP_ENABLED=true
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "4317"        # OTLP gRPC - internally used by OTel collector
 
   grafana:
     image: grafana/grafana:10.2.0

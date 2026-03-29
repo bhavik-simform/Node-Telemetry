@@ -18,6 +18,11 @@ exporters:
     tls:
       insecure: true
 
+  otlp/jaeger:
+    endpoint: "jaeger:4317"
+    tls:
+      insecure: true
+
   debug:
     verbosity: detailed
 
@@ -42,7 +47,7 @@ service:
     traces:
       receivers: [otlp]
       processors: [resource, batch]
-      exporters: [otlp/tempo]
+      exporters: [otlp/tempo, otlp/jaeger]
     metrics:
       receivers: [otlp]
       processors: [resource, batch]
