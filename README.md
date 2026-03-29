@@ -123,4 +123,11 @@ import { metrics } from '@opentelemetry/api';
 const meter = metrics.getMeter('order-service');
 const counter = meter.createCounter('orders_rejected_total');
 counter.add(1, { reason: 'invalid_user' });
+
+
+App → Collector: Push (OTLP)
+Collector → Tempo (Traces): Push
+Collector → Loki (Logs): Push
+Prometheus → Collector (Metrics): Pull
+
 ```
