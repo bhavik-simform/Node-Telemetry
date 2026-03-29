@@ -63,6 +63,7 @@ services:
     command: [ "-config.file=/etc/tempo.yaml" ]
     volumes:
       - ./infrastructure/tempo/tempo.yaml:/etc/tempo.yaml
+      # - ./tempo-data:/tmp/tempo #volume mapping for traces
     ports:
       - "3200:3200"
 
